@@ -1,0 +1,216 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tabs/matches.gd" id="1_matches"]
+
+[node name="Matches" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_matches")
+
+[node name="ListPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 600.0
+theme_type_variation = &"CardPanel"
+
+[node name="VBox" type="VBoxContainer" parent="ListPanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="ListPanel/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ListPanel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeadingLabel"
+text = "Fixtures & Results"
+
+[node name="CountLabel" type="Label" parent="ListPanel/VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"DimLabel"
+
+[node name="FilterBar" type="HFlowContainer" parent="ListPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="HSeparator" type="HSeparator" parent="ListPanel/VBox"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="ListPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MatchList" type="VBoxContainer" parent="ListPanel/VBox/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="StatsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 820.0
+offset_right = 1600.0
+offset_bottom = 600.0
+theme_type_variation = &"CardPanel"
+
+[node name="VBox" type="VBoxContainer" parent="StatsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Header" type="HBoxContainer" parent="StatsPanel/VBox"]
+layout_mode = 2
+
+[node name="Breadcrumb" type="Label" parent="StatsPanel/VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"DimLabel"
+text_overrun_behavior = 3
+
+[node name="CloseButton" type="Button" parent="StatsPanel/VBox/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"IconButton"
+text = "✕"
+
+[node name="Headline" type="Label" parent="StatsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+autowrap_mode = 3
+
+[node name="Scoreboard" type="PanelContainer" parent="StatsPanel/VBox"]
+layout_mode = 2
+theme_type_variation = &"InsetPanel"
+
+[node name="HBox" type="HBoxContainer" parent="StatsPanel/VBox/Scoreboard"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HomeBox" type="VBoxContainer" parent="StatsPanel/VBox/Scoreboard/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="HomeBadge" type="CenterContainer" parent="StatsPanel/VBox/Scoreboard/HBox/HomeBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HomeName" type="Label" parent="StatsPanel/VBox/Scoreboard/HBox/HomeBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"StrongLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CenterBox" type="VBoxContainer" parent="StatsPanel/VBox/Scoreboard/HBox"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 6
+
+[node name="ScoreLabel" type="Label" parent="StatsPanel/VBox/Scoreboard/HBox/CenterBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DisplayLabel"
+horizontal_alignment = 1
+
+[node name="StatusPill" type="PanelContainer" parent="StatsPanel/VBox/Scoreboard/HBox/CenterBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"StatusPill"
+
+[node name="StatusLabel" type="Label" parent="StatsPanel/VBox/Scoreboard/HBox/CenterBox/StatusPill"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"StatusLabel"
+
+[node name="KickoffLabel" type="Label" parent="StatsPanel/VBox/Scoreboard/HBox/CenterBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+horizontal_alignment = 1
+
+[node name="AwayBox" type="VBoxContainer" parent="StatsPanel/VBox/Scoreboard/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="AwayBadge" type="CenterContainer" parent="StatsPanel/VBox/Scoreboard/HBox/AwayBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AwayName" type="Label" parent="StatsPanel/VBox/Scoreboard/HBox/AwayBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"StrongLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ViewTabs" type="HBoxContainer" parent="StatsPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="OddsTab" type="Button" parent="StatsPanel/VBox/ViewTabs"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"SegmentButton"
+toggle_mode = true
+text = "Odds"
+
+[node name="StatsTab" type="Button" parent="StatsPanel/VBox/ViewTabs"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"SegmentButton"
+toggle_mode = true
+text = "Stats"
+
+[node name="OddsScroll" type="ScrollContainer" parent="StatsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="OddsMargin" type="MarginContainer" parent="StatsPanel/VBox/OddsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 14
+
+[node name="OddsList" type="VBoxContainer" parent="StatsPanel/VBox/OddsScroll/OddsMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="StatsScroll" type="ScrollContainer" parent="StatsPanel/VBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="StatsList" type="VBoxContainer" parent="StatsPanel/VBox/StatsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18

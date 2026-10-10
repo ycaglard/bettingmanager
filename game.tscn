@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://game.gd" id="0_game"]
+[ext_resource type="PackedScene" path="res://tabs/matches.tscn" id="1_matches"]
+[ext_resource type="PackedScene" path="res://tabs/relationship.tscn" id="2_relationship"]
+[ext_resource type="PackedScene" path="res://tabs/bets.tscn" id="3_bets"]
+[ext_resource type="PackedScene" path="res://tabs/finance.tscn" id="4_finance"]
+
+[node name="game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("0_game")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.043, 0.043, 0.114, 1)
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="PanelContainer" parent="Layout"]
+layout_mode = 2
+theme_type_variation = &"TopBar"
+
+[node name="Margin" type="MarginContainer" parent="Layout/TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="HBox" type="HBoxContainer" parent="Layout/TopBar/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Crest" type="PanelContainer" parent="Layout/TopBar/Margin/HBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"CrestPanel"
+
+[node name="CrestLabel" type="Label" parent="Layout/TopBar/Margin/HBox/Crest"]
+layout_mode = 2
+theme_type_variation = &"CrestLabel"
+text = "FBM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NavBar" type="HBoxContainer" parent="Layout/TopBar/Margin/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="BalanceBox" type="PanelContainer" parent="Layout/TopBar/Margin/HBox"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"DateBox"
+
+[node name="VBox" type="VBoxContainer" parent="Layout/TopBar/Margin/HBox/BalanceBox"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="BalanceLabel" type="Label" parent="Layout/TopBar/Margin/HBox/BalanceBox/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DateLabel"
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="Layout/TopBar/Margin/HBox/BalanceBox/VBox"]
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+text = "Balance"
+horizontal_alignment = 1
+
+[node name="DateBox" type="PanelContainer" parent="Layout/TopBar/Margin/HBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"DateBox"
+
+[node name="VBox" type="VBoxContainer" parent="Layout/TopBar/Margin/HBox/DateBox"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="DateLabel" type="Label" parent="Layout/TopBar/Margin/HBox/DateBox/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DateLabel"
+horizontal_alignment = 1
+
+[node name="DayLabel" type="Label" parent="Layout/TopBar/Margin/HBox/DateBox/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DimLabel"
+horizontal_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="Layout/TopBar/Margin/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 56)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_type_variation = &"PrimaryButton"
+text = "Continue    ›"
+
+[node name="Tabs" type="TabContainer" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+tabs_visible = false
+
+[node name="Matches" parent="Layout/Tabs" instance=ExtResource("1_matches")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Relationship" parent="Layout/Tabs" instance=ExtResource("2_relationship")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Bets" parent="Layout/Tabs" instance=ExtResource("3_bets")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Finance" parent="Layout/Tabs" instance=ExtResource("4_finance")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
